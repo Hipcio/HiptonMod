@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hiptonmod",
+  "name": "Hipton Mod",
+  "description": "Spore monsters in Minecraft.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Filip Celejewski","Sebastian Celejewski"],
+  "credits": "for sebastian celejewski (my dad)",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
