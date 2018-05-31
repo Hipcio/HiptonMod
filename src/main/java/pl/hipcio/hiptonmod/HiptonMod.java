@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package pl.hipcio.hiptonmod;
 
 import org.apache.logging.log4j.Logger;
 
@@ -17,8 +17,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = ExampleMod.MODID, name = ExampleMod.NAME, version = ExampleMod.VERSION)
-public class ExampleMod {
+@Mod(modid = HiptonMod.MODID, name = HiptonMod.NAME, version = HiptonMod.VERSION)
+public class HiptonMod {
 
     public static final String MODID = "hiptonmod";
     public static final String NAME = "Hipton Mod";
