@@ -47,7 +47,6 @@ public class HiptonMod {
         hiptonStoneBlock.setRegistryName("hiptonStoneBlock");
         hiptonStoneBlock.setUnlocalizedName("hiptonStoneBlock");
         hiptonStoneBlock.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-        
 
         hiptonOreItemBlock = new ItemBlock(hiptonOreBlock);
         hiptonOreItemBlock.setRegistryName(hiptonOreBlock.getRegistryName());
@@ -72,8 +71,11 @@ public class HiptonMod {
         logger.info("*** Registering Hipton Ore item block");
         event.getRegistry().register(hiptonOreItemBlock);
         event.getRegistry().register(hiptonStoneItemBlock);
-        
-        ModelResourceLocation location = new ModelResourceLocation(MODID + ":" + hiptonOreItemBlock.getUnlocalizedName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(hiptonOreItemBlock, 0, location);        
+
+        ModelResourceLocation oreBlockResourceLocation = new ModelResourceLocation(MODID + ":" + hiptonOreItemBlock.getUnlocalizedName(), "inventory");
+        ModelLoader.setCustomModelResourceLocation(hiptonOreItemBlock, 0, oreBlockResourceLocation);
+
+        ModelResourceLocation stoneBlockResourceLocation = new ModelResourceLocation(MODID + ":" + hiptonStoneItemBlock.getUnlocalizedName(), "inventory");
+        ModelLoader.setCustomModelResourceLocation(hiptonStoneItemBlock, 0, stoneBlockResourceLocation);
     }
 }
