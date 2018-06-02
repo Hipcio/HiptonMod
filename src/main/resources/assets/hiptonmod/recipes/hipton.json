@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A A",
+    "AAA",
+    "A A"
+  ],
+  "key": {
+    "A": [
+      {
+        "item": "hiptonmod:hiptonoreblock"
+      }
+    ]
+  },
+  "result": {
+    "item": "hiptonmod:hiptonstoneblock",
+    "data": 0
+  }
+}
