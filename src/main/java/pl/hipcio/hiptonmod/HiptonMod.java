@@ -34,7 +34,7 @@ public class HiptonMod {
     private ItemBlock hiptonOreItemBlock;
     private HiptonStoneBlock hiptonStoneBlock;
     private ItemBlock hiptonStoneItemBlock;
-    private HiptonEggBlock hiptonEggBlock;
+    public static HiptonEggBlock hiptonEggBlock;
     private ItemBlock hiptonEggItemBlock;
 
     @EventHandler

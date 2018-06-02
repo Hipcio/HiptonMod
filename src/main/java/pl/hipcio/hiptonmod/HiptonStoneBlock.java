@@ -25,7 +25,7 @@ public class HiptonStoneBlock extends Block {
         System.out.println("Jestem tutaj! Kliknęty! " + player.getHeldItemMainhand().getItem().getUnlocalizedName());
         
         if (player.getHeldItemMainhand().getItem().getUnlocalizedName().equals("item.hatchetDiamond")) {
-            world.setBlockToAir(position);
+            world.setBlockState(position, HiptonMod.hiptonEggBlock.getBlockState().getBaseState());
         }
     }
 }
