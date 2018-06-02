@@ -28,6 +28,8 @@ public class ExampleMod {
 
     private Block hiptonOreBlock;
     private ItemBlock hiptonOreItemBlock;
+    private Block hiptonStoneBlock;
+    private ItemBlock hiptonStoneItemBlock;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -41,9 +43,16 @@ public class ExampleMod {
         hiptonOreBlock.setRegistryName("hiptonOreBlock");
         hiptonOreBlock.setUnlocalizedName("hiptonOreBlock");
         hiptonOreBlock.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        hiptonStoneBlock = new Block(Material.ROCK);
+        hiptonStoneBlock.setRegistryName("hiptonStoneBlock");
+        hiptonStoneBlock.setUnlocalizedName("hiptonStoneBlock");
+        hiptonStoneBlock.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        
 
         hiptonOreItemBlock = new ItemBlock(hiptonOreBlock);
         hiptonOreItemBlock.setRegistryName(hiptonOreBlock.getRegistryName());
+        hiptonStoneItemBlock = new ItemBlock(hiptonStoneBlock);
+        hiptonStoneItemBlock.setRegistryName(hiptonStoneBlock.getRegistryName());
     }
 
     @EventHandler
@@ -55,12 +64,14 @@ public class ExampleMod {
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         logger.info("*** Registering Hipton Ore block");
         event.getRegistry().register(hiptonOreBlock);
+        event.getRegistry().register(hiptonStoneBlock);
     }
 
     @SubscribeEvent
     public void registerItemBlocks(RegistryEvent.Register<Item> event) {
         logger.info("*** Registering Hipton Ore item block");
         event.getRegistry().register(hiptonOreItemBlock);
+        event.getRegistry().register(hiptonStoneItemBlock);
         
         ModelResourceLocation location = new ModelResourceLocation(MODID + ":" + hiptonOreItemBlock.getUnlocalizedName(), "inventory");
         ModelLoader.setCustomModelResourceLocation(hiptonOreItemBlock, 0, location);        
