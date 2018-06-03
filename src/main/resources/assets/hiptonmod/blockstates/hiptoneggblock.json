@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "hiptonmod:hipton_egg" }
+        "normal": { "model": "hiptonmod:hiptoneggblock" }
     }
 }

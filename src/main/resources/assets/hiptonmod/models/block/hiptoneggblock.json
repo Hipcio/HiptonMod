@@ -1,8 +1,8 @@
 {   "parent": "block/block",
     "ambientocclusion": false,
     "textures": {
-        "particle": "hiptonmod:blocks/hipton_egg",
-        "all": "hiptonmod:blocks/hipton_egg"
+        "particle": "hiptonmod:blocks/hiptoneggblock",
+        "all": "hiptonmod:blocks/hiptoneggblock"
     },
     "elements": [
         {   "from": [ 6, 15, 6 ],

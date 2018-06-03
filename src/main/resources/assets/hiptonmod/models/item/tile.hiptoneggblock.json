@@ -1,6 +1,3 @@
 {
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "hiptonmod:items/hiptonEggBlock"
-    }
+    "parent": "hiptonmod:block/hiptoneggblock"
 }
