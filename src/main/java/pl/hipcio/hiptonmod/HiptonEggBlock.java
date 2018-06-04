@@ -2,6 +2,7 @@ package pl.hipcio.hiptonmod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class HiptonEggBlock extends Block {
@@ -16,4 +17,8 @@ public class HiptonEggBlock extends Block {
 
     }
 
+    @Override
+    public boolean isOpaqueCube(IBlockState p_isOpaqueCube_1_) {
+        return false;
+    }
 }
