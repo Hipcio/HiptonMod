@@ -15,8 +15,11 @@ public class ModelHipton extends ModelBase {
     private ModelRenderer frontMiddleLeftLeg;
     private ModelRenderer frontMiddleRightLeg;
 
-    private ModelRenderer backMiddleLeftleg;
-    private ModelRenderer backMiddleRightleg;
+    private ModelRenderer backMiddleLeftLeg;
+    private ModelRenderer backMiddleRightLeg;
+
+    private ModelRenderer backLeftLeg;
+    private ModelRenderer backRightLeg;
 
     public ModelHipton() {
         body = new ModelRenderer(this, 0, 0);
@@ -58,12 +61,49 @@ public class ModelHipton extends ModelBase {
         
         frontMiddleRightLeg = new ModelRenderer(this, 0, 0);
         frontMiddleRightLeg.addBox(0, 0, 0, 7, 2, 2);
-        frontMiddleRightLeg.setRotationPoint(6, 18, 10);
+        frontMiddleRightLeg.setRotationPoint(6, 18, 13);
         frontMiddleRightLeg.setTextureSize(16, 16);
 
         frontMiddleRightLeg.rotateAngleX = getAngle(180);
         frontMiddleRightLeg.rotateAngleY = getAngle(180);
         frontMiddleRightLeg.rotateAngleZ = getAngle(-30);   
+
+        backMiddleLeftLeg = new ModelRenderer(this, 0, 0);
+        backMiddleLeftLeg.addBox(0, 0, 0, 7, 2, 2);
+        backMiddleLeftLeg.setRotationPoint(16, 18, 13);
+        backMiddleLeftLeg.setTextureSize(16, 16);
+
+        backMiddleLeftLeg.rotateAngleX = getAngle(90);
+        backMiddleLeftLeg.rotateAngleY = getAngle(0);
+        backMiddleLeftLeg.rotateAngleZ = getAngle(30);
+        
+        backMiddleRightLeg = new ModelRenderer(this, 0, 0);
+        backMiddleRightLeg.addBox(0, 0, 0, 7, 2, 2);
+        backMiddleRightLeg.setRotationPoint(6, 18, 10);
+        backMiddleRightLeg.setTextureSize(16, 16);
+
+        backMiddleRightLeg.rotateAngleX = getAngle(180);
+        backMiddleRightLeg.rotateAngleY = getAngle(180);
+        backMiddleRightLeg.rotateAngleZ = getAngle(-30);   
+    
+        backLeftLeg = new ModelRenderer(this, 0, 0);
+        backLeftLeg.addBox(0, 0, 0, 7, 2, 2);
+        backLeftLeg.setRotationPoint(16, 18, 16);
+        backLeftLeg.setTextureSize(16, 16);
+
+        backLeftLeg.rotateAngleX = getAngle(90);
+        backLeftLeg.rotateAngleY = getAngle(0);
+        backLeftLeg.rotateAngleZ = getAngle(30);
+        
+        backRightLeg = new ModelRenderer(this, 0, 0);
+        backRightLeg.addBox(0, 0, 0, 7, 2, 2);
+        backRightLeg.setRotationPoint(6, 18, 16);
+        backRightLeg.setTextureSize(16, 16);
+
+        backRightLeg.rotateAngleX = getAngle(180);
+        backRightLeg.rotateAngleY = getAngle(180);
+        backRightLeg.rotateAngleZ = getAngle(-30);   
+
     }
 
     @Override
@@ -75,8 +115,10 @@ public class ModelHipton extends ModelBase {
         frontRightLeg.render(par7);
         frontMiddleLeftLeg.render(par7);
         frontMiddleRightLeg.render(par7);
-        backMiddleLeftleg.render(par7);
-        backMiddleRightleg.render(par7);
+        backMiddleLeftLeg.render(par7);
+        backMiddleRightLeg.render(par7);
+        backLeftLeg.render(par7);
+        backRightLeg.render(par7);
         
     }
     
