@@ -1,127 +1,83 @@
 package pl.hipcio.hiptonmod;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelHipton extends ModelBase {
 
-    private ModelRenderer body;
-    private ModelRenderer head;
+    private List<ModelRenderer> elements;
 
-    private ModelRenderer frontLeftLeg;
-    private ModelRenderer frontRightLeg;
+    private long lastReloadTime = 0;
+    private long reloadPeriodInSeconds = 5;
 
-    private ModelRenderer frontMiddleLeftLeg;
-    private ModelRenderer frontMiddleRightLeg;
+    private List<ModelRenderer> reloadModel() {
+        List<ModelRenderer> elements = new ArrayList<>();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("../model.csv"));
+            for (String line : lines) {
+                String[] values = line.split(",");
 
-    private ModelRenderer backMiddleLeftLeg;
-    private ModelRenderer backMiddleRightLeg;
+                String name = values[0].trim();
 
-    private ModelRenderer backLeftLeg;
-    private ModelRenderer backRightLeg;
+                int x = parseInt(values[1]);
+                int y = parseInt(values[2]);
+                int z = parseInt(values[3]);
 
-    public ModelHipton() {
-        body = new ModelRenderer(this, 0, 0);
-        body.addBox(6, 13, 5, 10, 5, 13);
-        body.setRotationPoint(0, 0, 0);
-        body.setTextureSize(16, 16);
+                int sizeX = parseInt(values[4]);
+                int sizeY = parseInt(values[5]);
+                int sizeZ = parseInt(values[6]);
 
-        head = new ModelRenderer(this, 0, 0);
-        head.addBox(6, 16, 2, 10, 6, 5);
-        head.setRotationPoint(0, 0, 0);
-        head.setTextureSize(16, 16);
+                int rotX = parseInt(values[7]);
+                int rotY = parseInt(values[8]);
+                int rotZ = parseInt(values[9]);
 
-        frontLeftLeg = new ModelRenderer(this, 0, 0);
-        frontLeftLeg.addBox(0, 0, 0, 7, 2, 2);
-        frontLeftLeg.setRotationPoint(16, 18, 7);
-        frontLeftLeg.setTextureSize(16, 16);
-        
-        frontLeftLeg.rotateAngleX = getAngle(90);
-        frontLeftLeg.rotateAngleY = getAngle(0);
-        frontLeftLeg.rotateAngleZ = getAngle(30);
+                int rotAlpha = parseInt(values[10]);
+                int rotBeta = parseInt(values[11]);
+                int rotGamma = parseInt(values[12]);
 
-        frontRightLeg = new ModelRenderer(this, 0, 0);
-        frontRightLeg.addBox(0, 0, 0, 7, 2, 2);
-        frontRightLeg.setRotationPoint(6, 18, 7);
-        frontRightLeg.setTextureSize(16, 16);
-        
-        frontRightLeg.rotateAngleX = getAngle(180);
-        frontRightLeg.rotateAngleY = getAngle(180);
-        frontRightLeg.rotateAngleZ = getAngle(-30);   
-        
-        frontMiddleLeftLeg = new ModelRenderer(this, 0, 0);
-        frontMiddleLeftLeg.addBox(0, 0, 0, 7, 2, 2);
-        frontMiddleLeftLeg.setRotationPoint(16, 18, 10);
-        frontMiddleLeftLeg.setTextureSize(16, 16);
+                System.out.println("Adding element " + name);
 
-        frontMiddleLeftLeg.rotateAngleX = getAngle(90);
-        frontMiddleLeftLeg.rotateAngleY = getAngle(0);
-        frontMiddleLeftLeg.rotateAngleZ = getAngle(30);
-        
-        frontMiddleRightLeg = new ModelRenderer(this, 0, 0);
-        frontMiddleRightLeg.addBox(0, 0, 0, 7, 2, 2);
-        frontMiddleRightLeg.setRotationPoint(6, 18, 13);
-        frontMiddleRightLeg.setTextureSize(16, 16);
+                ModelRenderer element = new ModelRenderer(this, 0, 0);
+                element.addBox(x, y, z, sizeX, sizeY, sizeZ);
+                element.setRotationPoint(rotX, rotY, rotZ);
+                element.rotateAngleX = getAngle(rotAlpha);
+                element.rotateAngleY = getAngle(rotBeta);
+                element.rotateAngleZ = getAngle(rotGamma);
 
-        frontMiddleRightLeg.rotateAngleX = getAngle(180);
-        frontMiddleRightLeg.rotateAngleY = getAngle(180);
-        frontMiddleRightLeg.rotateAngleZ = getAngle(-30);   
+                elements.add(element);
+            }
 
-        backMiddleLeftLeg = new ModelRenderer(this, 0, 0);
-        backMiddleLeftLeg.addBox(0, 0, 0, 7, 2, 2);
-        backMiddleLeftLeg.setRotationPoint(16, 18, 13);
-        backMiddleLeftLeg.setTextureSize(16, 16);
+            return elements;
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to reload model: " + ex.getMessage() + ": " + ex.getMessage());
+        }
+    }
 
-        backMiddleLeftLeg.rotateAngleX = getAngle(90);
-        backMiddleLeftLeg.rotateAngleY = getAngle(0);
-        backMiddleLeftLeg.rotateAngleZ = getAngle(30);
-        
-        backMiddleRightLeg = new ModelRenderer(this, 0, 0);
-        backMiddleRightLeg.addBox(0, 0, 0, 7, 2, 2);
-        backMiddleRightLeg.setRotationPoint(6, 18, 10);
-        backMiddleRightLeg.setTextureSize(16, 16);
-
-        backMiddleRightLeg.rotateAngleX = getAngle(180);
-        backMiddleRightLeg.rotateAngleY = getAngle(180);
-        backMiddleRightLeg.rotateAngleZ = getAngle(-30);   
-    
-        backLeftLeg = new ModelRenderer(this, 0, 0);
-        backLeftLeg.addBox(0, 0, 0, 7, 2, 2);
-        backLeftLeg.setRotationPoint(16, 18, 16);
-        backLeftLeg.setTextureSize(16, 16);
-
-        backLeftLeg.rotateAngleX = getAngle(90);
-        backLeftLeg.rotateAngleY = getAngle(0);
-        backLeftLeg.rotateAngleZ = getAngle(30);
-        
-        backRightLeg = new ModelRenderer(this, 0, 0);
-        backRightLeg.addBox(0, 0, 0, 7, 2, 2);
-        backRightLeg.setRotationPoint(6, 18, 16);
-        backRightLeg.setTextureSize(16, 16);
-
-        backRightLeg.rotateAngleX = getAngle(180);
-        backRightLeg.rotateAngleY = getAngle(180);
-        backRightLeg.rotateAngleZ = getAngle(-30);   
-
+    private int parseInt(String s) {
+        return Integer.parseInt(s.trim());
     }
 
     @Override
     public void render(Entity parEntity, float parTime, float parSwingSuppress, float par4, float parHeadAngleY, float parHeadAngleX, float par7) {
-        body.render(par7);
-        head.render(par7);
+        long currentTime = new Date().getTime();
+        if ((currentTime - lastReloadTime) * 1000 > reloadPeriodInSeconds) {
+            System.out.println("Reloading model");
+            elements = reloadModel();
+            lastReloadTime = currentTime;
+        }
 
-        frontLeftLeg.render(par7);
-        frontRightLeg.render(par7);
-        frontMiddleLeftLeg.render(par7);
-        frontMiddleRightLeg.render(par7);
-        backMiddleLeftLeg.render(par7);
-        backMiddleRightLeg.render(par7);
-        backLeftLeg.render(par7);
-        backRightLeg.render(par7);
-        
+        for (ModelRenderer element : elements) {
+            element.render(par7);
+        }
     }
-    
+
     private float getAngle(double angleInDegrees) {
         return (float) (angleInDegrees * Math.PI / 180);
     }
