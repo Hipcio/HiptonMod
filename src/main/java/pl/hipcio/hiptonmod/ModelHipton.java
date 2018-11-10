@@ -15,7 +15,7 @@ public class ModelHipton extends ModelBase {
     private List<ModelRenderer> elements;
 
     private long lastReloadTime = 0;
-    private long reloadPeriodInSeconds = 5;
+    private long reloadPeriodInSeconds = 2;
 
     private List<ModelRenderer> reloadModel() {
         List<ModelRenderer> elements = new ArrayList<>();
@@ -67,7 +67,7 @@ public class ModelHipton extends ModelBase {
     @Override
     public void render(Entity parEntity, float parTime, float parSwingSuppress, float par4, float parHeadAngleY, float parHeadAngleX, float par7) {
         long currentTime = new Date().getTime();
-        if ((currentTime - lastReloadTime) * 1000 > reloadPeriodInSeconds) {
+        if (currentTime - lastReloadTime > reloadPeriodInSeconds * 1000) {
             System.out.println("Reloading model");
             elements = reloadModel();
             lastReloadTime = currentTime;
